@@ -1,9 +1,14 @@
-// olá, mundo!
-const mensagem = "olá, eu!"
-
-{
-const mensagem = "olá, mundo"
-console.log(mensagem);
+// array, objetos
+let meta = {
+    value: 'ler um livro por mês',
+    checked: false, 
+    log: (info) => {
+        console.log(info)
+    }
 }
 
-console.log(mensagem)
+meta.value = "não é mais um livro"
+meta.log(meta.value)
+
+// fintion // arrow funtion
+//const criarMeta = () => {}
