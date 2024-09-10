@@ -58,3 +58,7 @@ Apresentar os dados
 ## Estrutura de repetição
 
 - [X] wile
+
+## cCondicionais
+
+- [X] switch
