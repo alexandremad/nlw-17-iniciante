@@ -54,3 +54,7 @@ Apresentar os dados
 - [X] Criar, passar argumentos
 - [X] Executar
 - [x] arrow function / named function
+
+## Estrutura de repetição
+
+- [X] wile
