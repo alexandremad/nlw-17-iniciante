@@ -7,7 +7,7 @@ Como um lego, você irá utilizar peças para criar algoritimos, ou seja, para r
 
 ## Peças de uma linguagem
 
-- [X} Comentários
+- Comentários
 - Declaração (atributição, concatenação, matemáticos, logicos )
 - Tipos de dados (string, number, boolean)
 - Estrutura de dados (functions, object, array)
@@ -44,7 +44,7 @@ Apresentar os dados
 ## Array:
 
 - [X] Uma lista que contém qualquer tipo de dado
-- [X] Métodos de array: push, [find, forEach, filter] : HOF (Higher Order Functions)
+- [X] Métodos de array: push, [find, forEach, filter, map] : HOF (Higher Order Functions)
 
 ## Objetos:
 
