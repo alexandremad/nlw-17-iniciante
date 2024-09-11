@@ -7,9 +7,8 @@ let meta = {
 
 let metas = [ meta ]
 
-
 const cadastrarMeta = async () => {
-    const meta = await input({mensage: "Didgite a meta:"})
+    const meta = await input({ message: "Digite a meta:" })
 
     if(meta.length == 0) {
         console.log('A meta não pode ser vazia.')
@@ -19,12 +18,11 @@ const cadastrarMeta = async () => {
     metas.push(
         { value: meta, checked: false }
     )
-
 }
 
 const listarMetas = async () => {
     const respostas = await checkbox({
-        mesage: "Use as setas para mudar de meta, o espaço para marcar ou desmarcar e Enter para finalizar essa etapa",
+        message: "Use as setas para mudar de meta, o espaço para marcar ou desmarcar e Enter para finalizar essa etapa",
         choices: [...metas],
         instructions: false
     })
@@ -38,13 +36,14 @@ const listarMetas = async () => {
        return 
     }
  
-
     respostas.forEach((resposta) => {
         const meta = metas.find((m) => {
             return m.value == resposta
         }) 
 
-        meta.checked = true
+        if (meta) {
+            meta.checked = true
+        }
     })
 
     console.log('Meta(s) marcadas como concluída(s)')
@@ -61,18 +60,31 @@ const metasRealizadas = async () => {
     }
 
     await select({
-        mensage: " Metas Realizadas",
-        choices: [...realizadas]
+        message: "Metas Realizadas" + realizadas.length,
+        choices: realizadas.map(r => ({ name: r.value, value: r.value }))
     })    
+}
 
+const metasAbertas = async () => {
+    const abertas = metas.filter((meta) => {
+        return !meta.checked 
+    })
+    
+    if(abertas.length == 0){
+        console.log('Não existem metas abertas! :)')
+        return
+    }
+    
+    await select({
+        message: "Metas abertas" + abertas.length,
+        choices: abertas.map(a => ({ name: a.value, value: a.value }))
+    })    
 }
 
 const start = async () => {
-    
     while(true){
-      
         const opcao = await select({
-            mensage: "Menu >",
+            message: "Menu >",
             choices:[
                 {
                   name: "Cadastrar meta",
@@ -87,12 +99,15 @@ const start = async () => {
                     value: "realizadas"    
                 },
                 {
+                    name: "Metas abertas",
+                    value: "abertas"    
+                },
+                {
                     name: "Sair",
                     value: "sair"
                 }
             ]
         })
-
 
         switch(opcao){
             case "cadastrar":
@@ -105,8 +120,11 @@ const start = async () => {
             case "realizadas":  
                 await metasRealizadas()
                 break 
+            case "abertas":  
+                await metasAbertas()
+                break     
             case "sair":
-                console.log("Até a proxima")
+                console.log("Até a próxima")
                 return  
         }    
     }
